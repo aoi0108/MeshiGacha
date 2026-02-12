@@ -4,14 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>飯ガチャ - Gohan Gacha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="bg-effects">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+    <div class="bg-grid"></div>
+  </div>
+
   <div class="container">
     <header class="header">
-      <h1 class="title">🍚 飯ガチャ 🎰</h1>
-      <p class="subtitle">今日のご飯、運命に任せよう！</p>
+      <p class="header-label">— GOHAN GACHA —</p>
+      <h1 class="title">飯ガチャ</h1>
+      <p class="subtitle">今日のご飯、運命に任せよう</p>
     </header>
 
     <main class="main">
@@ -19,41 +30,71 @@
       <section id="gacha-section" class="gacha-section">
         <div class="gacha-machine">
           <div class="machine-body">
+            <div class="machine-ring machine-ring--outer"></div>
+            <div class="machine-ring machine-ring--inner"></div>
             <div class="machine-window">
               <span class="machine-emoji">🍽️</span>
             </div>
+            <div class="machine-particles">
+              <span class="particle"></span>
+              <span class="particle"></span>
+              <span class="particle"></span>
+              <span class="particle"></span>
+              <span class="particle"></span>
+              <span class="particle"></span>
+            </div>
           </div>
-          <button id="gacha-button" class="gacha-button">
-            ガチャを回す！
-          </button>
+        </div>
+        <button id="gacha-button" class="gacha-button">
+          <span class="gacha-button__text">ガチャを回す！</span>
+          <span class="gacha-button__shine"></span>
+        </button>
+        <div class="rates-hint">
+          <span class="rate rate--ssr">SSR 5%</span>
+          <span class="rate rate--sr">SR 15%</span>
+          <span class="rate rate--r">R 30%</span>
+          <span class="rate rate--n">N 50%</span>
         </div>
       </section>
 
       <!-- 抽選中アニメーション -->
       <section id="rolling-section" class="rolling-section hidden">
         <div class="rolling-display">
-          <p class="rolling-label">抽選中...</p>
+          <div class="rolling-ring"></div>
+          <p class="rolling-label">抽選中</p>
           <div id="rolling-text" class="rolling-text">🍔</div>
+          <div class="rolling-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
         </div>
       </section>
 
       <!-- 結果画面 -->
       <section id="result-section" class="result-section hidden">
         <div id="result-card" class="result-card">
-          <div id="result-rarity-badge" class="rarity-badge">SSR</div>
-          <h2 id="result-name" class="result-name">店名</h2>
-          <p id="result-genre" class="result-genre">ジャンル</p>
+          <div class="card-shine"></div>
+          <div class="card-border"></div>
+          <div class="card-content">
+            <div id="result-rarity-badge" class="rarity-badge">SSR</div>
+            <h2 id="result-name" class="result-name">店名</h2>
+            <p id="result-genre" class="result-genre">ジャンル</p>
+          </div>
         </div>
 
         <div class="result-actions">
           <a id="maps-button" class="action-button maps-button" href="#" target="_blank" rel="noopener noreferrer">
-            📍 Googleマップで検索
+            <span class="action-icon">📍</span>
+            <span>Googleマップで検索</span>
           </a>
           <button id="share-button" class="action-button share-button">
-            📋 結果をシェア
+            <span class="action-icon">📋</span>
+            <span>結果をシェア</span>
           </button>
           <button id="retry-button" class="action-button retry-button">
-            🔄 もう一回引く！
+            <span class="action-icon">🔄</span>
+            <span>もう一回引く！</span>
           </button>
         </div>
         <p id="share-toast" class="share-toast hidden">URLをコピーしました！</p>

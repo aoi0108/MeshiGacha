@@ -116,19 +116,19 @@ const showResult = (restaurant) => {
   rollingSection.classList.add("hidden");
   resultSection.classList.remove("hidden");
 
-  // SSR gets confetti
+  // SSR gets special effects
   if (restaurant.rarity === "SSR") {
-    launchConfetti();
+    launchSSREffects();
   }
 };
 
 // ===========================
 // Rolling Animation
 // ===========================
-const ROLLING_DURATION = 2000;
+const ROLLING_DURATION = 2500;
 const ROLLING_INTERVAL = 80;
 
-const rollingEmojis = ["🍔", "🍣", "🍜", "🍛", "🥩", "🍕", "🍱", "🍙", "🥗", "🍝"];
+const rollingEmojis = ["🍔", "🍣", "🍜", "🍛", "🥩", "🍕", "🍱", "🍙", "🥗", "🍝", "🍤", "🥘", "🍲", "🥟"];
 
 const playRollingAnimation = (seed) => {
   gachaSection.classList.add("hidden");
@@ -151,6 +151,20 @@ const playRollingAnimation = (seed) => {
 };
 
 // ===========================
+// SSR Effects (Flash + Confetti)
+// ===========================
+const launchSSREffects = () => {
+  // Screen flash
+  const flash = document.createElement("div");
+  flash.className = "ssr-flash";
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 1000);
+
+  // Confetti
+  launchConfetti();
+};
+
+// ===========================
 // Confetti Effect (SSR only)
 // ===========================
 const launchConfetti = () => {
@@ -158,21 +172,25 @@ const launchConfetti = () => {
   container.className = "confetti-container";
   document.body.appendChild(container);
 
-  const colors = ["#ffd700", "#ff6b6b", "#4cc9f0", "#c77dff", "#ffd93d", "#ff8e53"];
+  const colors = ["#ffd700", "#ff6b6b", "#3db8f5", "#bf6dff", "#ffc973", "#ff8e53", "#2cc96b"];
 
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 80; i++) {
     const confetti = document.createElement("div");
     confetti.className = "confetti";
     confetti.style.left = `${Math.random() * 100}%`;
     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    confetti.style.animationDuration = `${1.5 + Math.random() * 2}s`;
-    confetti.style.animationDelay = `${Math.random() * 0.5}s`;
-    confetti.style.width = `${6 + Math.random() * 8}px`;
-    confetti.style.height = `${6 + Math.random() * 8}px`;
+    confetti.style.animationDuration = `${1.5 + Math.random() * 2.5}s`;
+    confetti.style.animationDelay = `${Math.random() * 0.8}s`;
+    confetti.style.width = `${5 + Math.random() * 8}px`;
+    confetti.style.height = `${5 + Math.random() * 8}px`;
+    // Mix of shapes
+    if (Math.random() > 0.5) {
+      confetti.style.borderRadius = "50%";
+    }
     container.appendChild(confetti);
   }
 
-  setTimeout(() => container.remove(), 4000);
+  setTimeout(() => container.remove(), 5000);
 };
 
 // ===========================
