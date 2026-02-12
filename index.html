@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飯ガチャ - Gohan Gacha</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">🍚 飯ガチャ 🎰</h1>
+      <p class="subtitle">今日のご飯、運命に任せよう！</p>
+    </header>
+
+    <main class="main">
+      <!-- ガチャボタン画面 -->
+      <section id="gacha-section" class="gacha-section">
+        <div class="gacha-machine">
+          <div class="machine-body">
+            <div class="machine-window">
+              <span class="machine-emoji">🍽️</span>
+            </div>
+          </div>
+          <button id="gacha-button" class="gacha-button">
+            ガチャを回す！
+          </button>
+        </div>
+      </section>
+
+      <!-- 抽選中アニメーション -->
+      <section id="rolling-section" class="rolling-section hidden">
+        <div class="rolling-display">
+          <p class="rolling-label">抽選中...</p>
+          <div id="rolling-text" class="rolling-text">🍔</div>
+        </div>
+      </section>
+
+      <!-- 結果画面 -->
+      <section id="result-section" class="result-section hidden">
+        <div id="result-card" class="result-card">
+          <div id="result-rarity-badge" class="rarity-badge">SSR</div>
+          <h2 id="result-name" class="result-name">店名</h2>
+          <p id="result-genre" class="result-genre">ジャンル</p>
+        </div>
+
+        <div class="result-actions">
+          <a id="maps-button" class="action-button maps-button" href="#" target="_blank" rel="noopener noreferrer">
+            📍 Googleマップで検索
+          </a>
+          <button id="share-button" class="action-button share-button">
+            📋 結果をシェア
+          </button>
+          <button id="retry-button" class="action-button retry-button">
+            🔄 もう一回引く！
+          </button>
+        </div>
+        <p id="share-toast" class="share-toast hidden">URLをコピーしました！</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 飯ガチャ - Gohan Gacha</p>
+    </footer>
+  </div>
+</body>
+</html>
